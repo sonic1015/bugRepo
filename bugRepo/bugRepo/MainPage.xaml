@@ -1,18 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:bugRepo"
+             xmlns:bugRepo="clr-namespace:bugRepo;assembly=bugRepo"
              x:Class="bugRepo.MainPage">
 
-    <TableView>
-        <TableView.Root>
-            <TableSection Title="Fishes">
-                <local:CustomViewCell />
-                <local:CustomViewCell />
-                <local:CustomViewCell />
-                <local:CustomViewCell />
-            </TableSection>
-        </TableView.Root>
-    </TableView>
+    <StackLayout VerticalOptions="Center">
+        <Label Text="Type &quot;Start Flashing&quot; to start flashing"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        <Entry Placeholder="Type answer here."
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               BackgroundColor="White">
+            <Entry.Triggers>
+                <Trigger TargetType="Entry"
+                         Property="Text"
+                         Value="Start Flashing" >
+                    <Trigger.EnterActions>
+                        
+                        <bugRepo:FlashingTriggerAction />
 
+                        <!--<bugRepo:FlashingTriggerAction Duration="2000" />-->
+
+                    </Trigger.EnterActions>
+                </Trigger>
+            </Entry.Triggers>
+        </Entry>
+    </StackLayout>
 </ContentPage>
